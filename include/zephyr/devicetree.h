@@ -4287,5 +4287,6 @@
 #include <zephyr/devicetree/reset.h>
 #include <zephyr/devicetree/mbox.h>
 #include <zephyr/devicetree/memory-attr.h>
+#include <zephyr/devicetree/sensors.h>
 
 #endif /* DEVICETREE_H */
