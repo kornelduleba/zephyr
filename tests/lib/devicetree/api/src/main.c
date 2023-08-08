@@ -1329,6 +1329,17 @@ ZTEST(devicetree_api, test_sensors)
 	/* DT_SENSOR_CHANNEL_BY_NAME */
 	zassert_equal(DT_SENSOR_CHANNEL_BY_NAME(TEST_PH, cpu), SENSOR_CHAN_DIE_TEMP);
 	zassert_equal(DT_SENSOR_CHANNEL_BY_NAME(TEST_PH, ambient), SENSOR_CHAN_AMBIENT_TEMP);
+
+	/* DT_SENSOR_INDEX_BY_IDX */
+	zassert_equal(DT_SENSOR_INDEX_BY_IDX(TEST_PH, 0), 0);
+	zassert_equal(DT_SENSOR_INDEX_BY_IDX(TEST_PH, 1), 1);
+
+	/* DT_SENSOR_INDEX */
+	zassert_equal(DT_SENSOR_INDEX(TEST_PH), 0, "expected 0, got %d", DT_SENSOR_INDEX(TEST_PH));
+
+	/* DT_SENSOR_INDEX_BY_NAME */
+	zassert_equal(DT_SENSOR_INDEX_BY_NAME(TEST_PH, cpu), 0);
+	zassert_equal(DT_SENSOR_INDEX_BY_NAME(TEST_PH, ambient), 1);
 }
 
 #undef DT_DRV_COMPAT

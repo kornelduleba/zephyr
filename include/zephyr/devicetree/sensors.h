@@ -126,6 +126,44 @@ extern "C" {
 	DT_PHA_BY_NAME(node_id, sensors, name, channel)
 
 /**
+ * @brief Get a sensor specifier's index cell value at an index
+ *
+ * If the binding specifier doesn't have a cell named "index", the default
+ * value of "0" is returned.
+ * Refer to the node's binding to check if necessary.
+ *
+ * @param node_id node identifier for a node with a sensor property
+ * @param idx logical index into sensor property
+ * @return the index cell value at index "idx", or "0"
+ */
+#define DT_SENSOR_INDEX_BY_IDX(node_id, idx) \
+	DT_PHA_BY_IDX_OR(node_id, sensors, idx, index, 0)
+
+/**
+ * @brief Equivalent to DT_SENSOR_INDEX_BY_IDX(node_id, 0)
+ * @param node_id node identifier for a node with a sensors property
+ * @return the channel cell value at index 0
+ * @see DT_SENSOR_CHANNEL_BY_IDX()
+ */
+#define DT_SENSOR_INDEX(node_id) DT_SENSOR_INDEX_BY_IDX(node_id, 0)
+
+/**
+ * @brief Get a sensor specifier's index cell value by name
+ *
+ * If the binding specifier doesn't have a cell named "index", the default
+ * value of "0" is returned.
+ * Refer to the node's binding to check if necessary.
+ *
+ * @param node_id node identifier for a node with a sensor property
+ * @param name lowercase-and-underscores name of a sensor element
+ *             as defined by the node's sensor-names property
+ * @return the channel cell value in the specifier at the named element
+ * @see DT_SENSOR_CELL_BY_NAME()
+ */
+#define DT_SENSOR_INDEX_BY_NAME(node_id, name) \
+	DT_PHA_BY_NAME_OR(node_id, sensors, name, index, 0)
+
+/**
  * @}
  */
 

@@ -1,0 +1,19 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: VND sensor device
+
+compatible: "vnd,sensor-device-2"
+
+include: [sensor-device.yaml, base.yaml]
+
+properties:
+  reg:
+    required: true
+
+  "#sensor-cells":
+    const: 2
+
+sensor-cells:
+  - channel
+  - index

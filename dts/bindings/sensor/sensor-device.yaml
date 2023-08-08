@@ -22,6 +22,6 @@ properties:
     type: int
     required: false
     description: |
-      Number of items to expect in a sensor specifier. Only one cell is
-      supported by the sensor API. It's used to describe the sensor channel
-      used by a consumer.
+      Number of items to expect in a sensor specifier. Either one or two cells
+      are supported by the sensor API. The first parameter is used to specify
+      the sensor channel to use, the second in an index within the channel.
