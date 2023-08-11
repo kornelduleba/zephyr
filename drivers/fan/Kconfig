@@ -22,6 +22,13 @@ config FAN_INIT_PRIORITY
 	help
 	  Fan subsystem and drivers initialization priority.
 
+config FAN_SHELL
+	bool "Fan shell"
+	depends on SHELL
+	default n
+	help
+	  This shell provides access to manipulating the fans.
+
 source "drivers/fan/Kconfig.pid"
 
 endmenu
