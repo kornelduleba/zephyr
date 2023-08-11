@@ -1,0 +1,22 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: Fan Device
+
+properties:
+  pwm_min:
+    type: int
+    default: 0
+    description: |
+      The smallest allowed percentage of power that the fan can be set to when it's active.
+      Has to within [0,100].
+  pwm_max:
+    type: int
+    default: 100
+    description: |
+      The largest allowed percentage of power that the fan can be set to.
+      Has to be within [0,100].
+  "#fan-cells":
+    type: int
+    required: true
+    description: Number of items to expect in a fan specifier

@@ -1,0 +1,25 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig FAN
+	bool "Fan control drivers"
+	select PWM
+	select SENSOR
+	help
+	  Enable Fan control drivers.
+
+if FAN
+
+module = FAN
+module-str = fan
+source "subsys/logging/Kconfig.template.log_config"
+
+menu "Fan drivers"
+
+config FAN_INIT_PRIORITY
+	int "Fan subsystem and drivers init priority"
+	default 91
+	help
+	  Fan subsystem and drivers initialization priority.
+endmenu
+endif
