@@ -21,5 +21,8 @@ config FAN_INIT_PRIORITY
 	default 91
 	help
 	  Fan subsystem and drivers initialization priority.
+
+source "drivers/fan/Kconfig.pid"
+
 endmenu
 endif

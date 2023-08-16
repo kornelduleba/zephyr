@@ -1,0 +1,55 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Zephyr fan generic device node
+
+  This defines a PID based fan control driver. From the control loop
+  perspective a fan is composed of a PWM to adjust its power and a tachometer
+  to report its current speed(RPM).
+
+  For example:
+
+  #include <dt-bindings/pwm/pwm.h>
+
+  / {
+      fan0: fan_0 {
+          compatible = "zephyr,fan-pid";
+          pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+          tach = <&tach0>;
+          pwm_min = <20>;
+          pwn_max = <100>;
+          kp = <13000>;
+          ki = <30>;
+          kd = <700000>;
+          #fan-cells = <1>;
+      };
+  };
+
+include: fan-device.yaml
+
+compatible: "zephyr,fan-pid"
+
+properties:
+  pwms:
+    required: true
+    type: phandle-array
+    description: Reference to a PWM specifier used to control the fan.
+  tach:
+    type: phandle
+    description: Reference to a tachometer sensor device that raports the fan speed.
+  kp:
+    default: 0
+    type: int
+  ki:
+    default: 0
+    type: int
+  kd:
+    default: 0
+    type: int
+  "#fan-cells":
+    type: int
+    const: 1
+
+fan-cells:
+  - mode

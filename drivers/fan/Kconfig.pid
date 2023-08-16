@@ -1,0 +1,12 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+config FAN_PID
+	bool "Fan control driver"
+	default y
+	select FPU
+	depends on DT_HAS_ZEPHYR_FAN_PID_ENABLED
+	help
+	  Enable an abstract fan driver that uses the PID algorithm
+	  in its control loop.
+	  It adjusts the fan PWM to achieve and sustain desired RPM.
