@@ -84,6 +84,17 @@
 	// 	status = "okay";
 	// 	gpios = <&gpioc 0 GPIO_ACTIVE_HIGH>;
 	// };
+
+	fan0: fan_0 {
+		compatible = "zephyr,fan-pid";
+		status = "okay";
+		pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+		tach = <&tach1>;
+		kp = <30000>;
+		ki = <30>;
+		kd = <150000>;
+		#fan-cells = <1>;
+        };
 };
 
 &cpu0 {
@@ -119,6 +130,8 @@
 	pinctrl-0 = <&pwm0_gpc3>;
 	pinctrl-names = "default";
 };
+
+
 
 &tach1 {
 	status = "okay";
